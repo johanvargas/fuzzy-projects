@@ -14,25 +14,50 @@ File cleanups. Check to see if there are duplicates in the specified directory.
 S
 
 """
-import main
-# main working. Not used, just practice.
 import timeit
 
+# Program speed.
 start = timeit.default_timer()
 
+# Essential constants & variables
 SYM = ['I',  'X',  'C', 'M']
 PENTA = ['V', 'L', 'D']
 
 sym_length = len(SYM)
+penta_length = len(PENTA)
 
-def crawl(base, digit):
-	if steps <= sym_length:
-		return listus[steps]
-	else:
-		return False
 
-c = crawl(SYM, 4)
-print(c)
+
+# Functions
+
+# return array of stringified int
+def get_num(num):
+	x = list(str(num))
+	return x
+
+"""
+@@@@@@@@@@@
+ADD CODE ABOVE, NOT BE DELETED. TESTING IS DONE BELOW THEM MOVED ABOVE WHEN USEFUL
+GIT COMMIT AT THE END OF EACH SESSION REGARDLESS OF 
+@@@@@@@@@@@
+
+"""
+
+def check_base(ary, digit):
+	l = len(ary)
+	#print(f'{l+1} is the length of the arrayed integer.')
+	return (10**l)
+
+
+# Testing functions
+
+def test1():
+	for n in range(0, 10000, 100):
+		print(f'\n{n}')
+		print(check_base(get_num(n)))
+print(test1())
+
+# Program speed.
 
 stop = timeit.default_timer()
 
