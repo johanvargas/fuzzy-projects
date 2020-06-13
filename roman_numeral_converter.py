@@ -15,26 +15,48 @@ S
 
 """
 import timeit
+import random
 
 # Program speed.
 start = timeit.default_timer()
 
 # Essential constants & variables
-SYM = ['I',  'X',  'C', 'M']
+SYM = ['X',  'C', 'M']
 PENTA = ['V', 'L', 'D']
-
+ONE = ['I']
+ZERO = ['nulla']
+key = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
+zero_value = 'nulla'
 sym_length = len(SYM)
 penta_length = len(PENTA)
 
 
-
 # Functions
+
 
 # return array of stringified int
 def get_num(num):
 	x = list(str(num))
 	return x
 
+
+def table(lst, key):
+	table = [
+		key[0],
+		(key[0] + key[0]),
+		(key[0] + key[0] + key[0]),
+		(key[0] + key[1]),
+		key[1],
+		(key[1] + key[0]),
+		(key[1] + key[0] + key[0]),
+		(key[1] + key[0] + key[0] + key[0]),
+		(key[0] + key[2]),
+		key[2]
+	]
+
+	def func(thing):
+		return table[(int(thing) - 1)]
+	return [ func(thing) for thing in lst]
 """
 @@@@@@@@@@@
 ADD CODE ABOVE, NOT BE DELETED. TESTING IS DONE BELOW THEM MOVED ABOVE WHEN USEFUL
@@ -43,19 +65,25 @@ GIT COMMIT AT THE END OF EACH SESSION REGARDLESS OF
 
 """
 
-def check_base(ary, digit):
-	l = len(ary)
-	#print(f'{l+1} is the length of the arrayed integer.')
-	return (10**l)
+def set_key(lst, count):
+	if count == (len(lst) - 1):
+		return ['I', 'V', 'X']
+	else:
+		return set_key(lst, count + 1)
+
 
 
 # Testing functions
 
-def test1():
-	for n in range(0, 10000, 100):
-		print(f'\n{n}')
-		print(check_base(get_num(n)))
-print(test1())
+n = random.randint(0, 1000)
+
+def disect(num):
+	a = get_num(num)
+	# b = get_base(a)
+	b = table(a, set_key(a, 0))
+	return [a, b]
+
+print(disect(89))
 
 # Program speed.
 
