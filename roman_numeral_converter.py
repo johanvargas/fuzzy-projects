@@ -36,11 +36,13 @@ penta_length = len(PENTA)
 
 # return array of stringified int
 def get_num(num):
+	print('get_num running...')
 	x = list(str(num))
 	return x
 
 
 def table(lst, key):
+	print('table running...')
 	table = [
 		key[0],
 		(key[0] + key[0]),
@@ -66,6 +68,7 @@ GIT COMMIT AT THE END OF EACH SESSION REGARDLESS OF
 """
 
 def set_key(lst, count):
+	print('set_key running...')
 	if count == (len(lst) - 1):
 		return ['I', 'V', 'X']
 	else:
