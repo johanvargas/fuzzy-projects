@@ -73,6 +73,7 @@ def convert(lst, count):
 	return convert(lst, count + 1)
 
 def table(lst, key):
+	lst.reverse()
 	# print('table running...')
 	table = [
 		key[0],
