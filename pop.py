@@ -1,29 +1,9 @@
-        # base position = 1
-		# key[-1] = NUMERALS[-1]
-		# key[-2] = NUMERALS[-2]
-		# key[-3] = NUMERALS[-3]
-
-		# base position = 2
-		# key[-1] = NUMERALS[-3]
-		# key[-2] = NUMERALS[-4]
-		# key[-3] = NUMERALS[-5]
-
-		# base position = 3
-		# key[-1] = NUMERALS[-5]
-		# key[-2] = NUMERALS[-6]
-		# key[-3] = NUMERALS[-7]
-
-		# base postion = 4
-		# key[-1] = NUMERALS[0]
-		# key[-2] = NUMERALS[-2]
-		# key[-3] = NUMERALS[-3]
-
-		# base position = 5
-		# key[-1] = NUMERALS[0]
-		# key[-2] = NUMERALS[-4]
-		# key[-3] = NUMERALS[-5]
+print('shtaaht...')
 l = [6, 7, 9, 7]
-print('{} is the actual number\n'.format(l))
+l_str = ['6', '7', '9', '7']
+seperator = ''
+
+print('The integer is : ', seperator.join(l_str))
 l.reverse()
 
 
@@ -36,7 +16,7 @@ def convert(lst, count):
 	# base 			= {(10**count)}'
 
 	NUMERALS = ['M', 'C', 'X', 'I']
-	PENTAS = ['D', 'L', 'V']
+	PENTAS = ['(VM)', 'D', 'L', 'V']
 	key = [None, None, None]
 	bp = len(str((10**count)))
 
@@ -44,19 +24,35 @@ def convert(lst, count):
 		# base position dictates the x1 x5 x10 it uses.
 		print('get_key...')
 		return NUMERALS[-(base_position)]
-	
-	def set_key(numeral):
-		return 
 
+	def set_key_test(numeral, base_pos):
+		'''
+		original on single.py
+
+		Basic version to get fucntionality but not extensible beyond 10,000??
+		missing function of using 'key' over later iterations on higher numbers
+		plus adding high number(vinculus etc...) symbols to appropriate entries
+
+		'''
+		key = [None, None, None]
+		for n in NUMERALS:
+			if numeral == n:
+				index = NUMERALS.index(n)
+				print(index)
+				print(NUMERALS[-(base_pos)])
+				key[0] = NUMERALS[-(base_pos)]
+				key[1] = PENTAS[-(base_pos)]
+				key[2] = NUMERALS[-(base_pos + 1)]
+		#print(key)
+		return key
 
 	print(count,
 		lst[count],
 		-(len(str((10**count)))),
 		(10**count),
-		get_key(len(str((10**count))),
-		key,
-		NUMERALS ,
-		bp))
+		get_key(len(str((10**count))), key, NUMERALS , bp),
+		set_key_test(get_key(len(str((10**count))), key, NUMERALS, bp), len(str(10**count)))
+	)
 	if count == (len(lst) - 1):
 		return True
 	print('\n')
