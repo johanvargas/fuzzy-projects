@@ -1,4 +1,4 @@
-NUMERALS = ['M', 'C', 'X', 'I']
+#NUMERALS = ['M', 'C', 'X', 'I']
 # PENTAS = ['5000/filler','D', 'L', 'V']
 
 # def set_key_test(numeral):
@@ -24,13 +24,13 @@ NUMERALS = ['M', 'C', 'X', 'I']
 # print(c)
 # print(d)
 
-seperator = ','
+# seperator = ','
 
-print(seperator.join(NUMERALS))
+# print(seperator.join(NUMERALS))
 
-s = 3/3
+# s = 3/3
 
-print(s)
+# print(s)
 
 
 '''
@@ -61,3 +61,7 @@ scraps, should be thrown out when functional
 		# key[-2] = NUMERALS[-4]
 		# key[-3] = NUMERALS[-5]
 '''
+l = lambda x: x * 3
+
+print(l(3))
+

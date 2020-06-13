@@ -1,10 +1,10 @@
 print('shtaaht...')
-l = [6, 7, 9, 7]
-l_str = ['6', '7', '9', '7']
-seperator = ''
 
-print('The integer is : ', seperator.join(l_str))
-l.reverse()
+# return array of stringified int
+def get_num(num):
+	# print('get_num running...')
+	x = list(str(num))
+	return x
 
 
 def convert(lst, count):
@@ -22,7 +22,7 @@ def convert(lst, count):
 
 	def get_key(base_position, key, NUMERALS ,bp):
 		# base position dictates the x1 x5 x10 it uses.
-		print('get_key...')
+		# print('get_key...')
 		return NUMERALS[-(base_position)]
 
 	def set_key_test(numeral, base_pos):
@@ -35,15 +35,17 @@ def convert(lst, count):
 
 		'''
 		key = [None, None, None]
+		# l = lambda x : True if base_pos > 4 else False
+		l = lambda x: -2 if x == 4 else -(x + 1) 
 		for n in NUMERALS:
 			if numeral == n:
 				index = NUMERALS.index(n)
-				print(index)
-				print(NUMERALS[-(base_pos)])
+				# print(index)
+				# print(NUMERALS[-(base_pos)])
 				key[0] = NUMERALS[-(base_pos)]
 				key[1] = PENTAS[-(base_pos)]
-				key[2] = NUMERALS[-(base_pos + 1)]
-		#print(key)
+				key[2] = NUMERALS[l(base_pos)]
+		# print(key)
 		return key
 
 	print(count,
@@ -51,13 +53,37 @@ def convert(lst, count):
 		-(len(str((10**count)))),
 		(10**count),
 		get_key(len(str((10**count))), key, NUMERALS , bp),
-		set_key_test(get_key(len(str((10**count))), key, NUMERALS, bp), len(str(10**count)))
+		set_key_test(get_key(len(str((10**count))), key, NUMERALS, bp), len(str(10**count))),
 	)
+	def run_table(lst, key, count):
+		print(table(lst, set_key_test(get_key(len(str((10**count))), key, NUMERALS, bp), len(str(10**count))))[count])
+		return 
+	run_table(lst, set_key_test(get_key(len(str((10**count))), key, NUMERALS, bp), len(str(10**count))), count)
+
+
 	if count == (len(lst) - 1):
 		return True
-	print('\n')
+	# print('\n')
 	return convert(lst, count + 1)
 
+def table(lst, key):
+	# print('table running...')
+	table = [
+		key[0],
+		(key[0] + key[0]),
+		(key[0] + key[0] + key[0]),
+		(key[0] + key[1]),
+		key[1],
+		(key[1] + key[0]),
+		(key[1] + key[0] + key[0]),
+		(key[1] + key[0] + key[0] + key[0]),
+		(key[0] + key[2]),
+		key[2]
+	]
+	def func(thing):
+		return table[(int(thing) - 1)]
+	return [func(thing) for thing in lst]
 
-check = convert(l, 0)
+
+check = convert(get_num(89), 0)
 print(check)
