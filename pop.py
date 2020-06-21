@@ -1,4 +1,3 @@
-import random
 import timeit
 print('shtaaht...')
 
@@ -92,10 +91,7 @@ def table(lst, key):
 	return [func(thing) for thing in lst]
 
 
-r = random.randint(0, 1000)
-print(r)
-check = convert(get_num(r), 0)
-print(check)
+# Testing on testing.py 
 
 # Program speed.
 
