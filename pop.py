@@ -1,4 +1,5 @@
 import timeit
+import random
 
 '''
 
@@ -53,6 +54,8 @@ def set_key_test(numeral, base_pos):
 # 	return
 
 def table(digit, key):
+	if digit == 0:
+		return 'nulla'
 	# print('table...')
 	table = [
 		key[0],
@@ -99,26 +102,33 @@ def convert(lst, count):
 		
 
 	return convert(lst, count + 1)
-
-
-
-p = convert(get_num(53), 0)
+r = random.randint(0, 10000)
+g = get_num(r)
+p = convert(g, 0)
 # print(p)
 # print(container)
-print(get_num(53))
-container.pop(0)
-container.pop(1)
+# g.reverse()
+print(r)
 
-def hash_table(container, get_num , count):
-	print(container, get_num)
-	for i in get_num:
-		y = table(int(i), container[get_num.index(i)])
-		container2.append(y)
 
-h = hash_table(container, get_num(53) ,0)
-print(h)
+def clean_container(container):
+	for i in container:
+		if len(i) == 1:
+			container.remove(i)
+	return container
 
-print(container2)
+
+
+def print_num(clean_container, get_num):
+	for t in range(len(get_num)):
+		# print(table(get_num[t], clean_container[int(t)]))
+		container2.append(table(get_num[t], clean_container[int(t)]))
+
+clean = clean_container(container)
+# print(clean)
+p = print_num(clean, g)
 container2.reverse()
-rn = "".join(container2)
-print(rn)
+j = ''.join(container2)
+print(j)
+
+
