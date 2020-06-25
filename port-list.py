@@ -5,6 +5,31 @@ import time
 from bs4 import BeautifulSoup
 # import re
 
+"""
+Things to add
+
+Session view
+	start a game session
+	track right and wrong answers.
+	points system
+	reward system??
+
+Game platform that compiles a system of learning for user.
+
+User selects a topic.
+	db created of 
+		factoids
+		flash cards
+		quizes
+		vid references
+		pdf referecnces
+		imgs
+		resources 
+
+It could learn you learning habits and feed info accordingly
+
+""" 
+
 page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
 
 # print(page.status_code)
@@ -54,10 +79,13 @@ def find_the_pair():
 		else:
 			pass
 
-		return 
+		pass
 
 
-game = find_the_pair()
 
-print(game)
+
+if __name__ == '__main__':
+	find_the_pair()
+
+
 
