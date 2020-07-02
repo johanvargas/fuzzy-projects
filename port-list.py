@@ -81,9 +81,6 @@ def find_the_pair():
 
 		pass
 
-
-
-
 if __name__ == '__main__':
 	find_the_pair()
 
