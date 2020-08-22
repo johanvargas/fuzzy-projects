@@ -50,15 +50,16 @@ def game_type():
 	# then prompts for selection of game type - number, name, mixed quest.
 	
 	print(f"Great, you selected {selekt}\n")
-	print('Now what type of game do you want to play?')
-	print('You have three options\n')
-	print('Option 1 - A Number Quest, where you answer the name of the corresponding port.')
-	print('Option 2 - A Name Quest, where you answer with the port number to the corresponding name.')
-	print('Option 3 - A Mixed Quest, where either a Name or a Number Quest is thrown at your weak little mind')
+	print('-->Now what type of game do you want to play?')
+	print('--->You have three options\n')
+	print('----->Option 1 - A Number Quest, where you answer the name of the corresponding port.')
+	print('-------->Option 2 - A Name Quest, where you answer with the port number to the corresponding name.')
+	print('------------->Option 3 - A Mixed Quest, where either a Name or a Number Quest is thrown at your weak little mind')
 	print('\n')
 
 	quest_type = int(input('So, what say you? enter the number of your fate... \n'))
 
+	print('\nSelecting game type...\n')
 	if selekt == 1:
 		sel1 = game_select(selekt, quest_type)	# Infinite Games
 	elif selekt == 2:
@@ -68,13 +69,20 @@ def game_type():
 		return game_type()
 
 def game_select(game_num, quest_type):
-	if game_num == 1:
-		game_inf(quest_type)
-	elif game_num == 2:
-		game_20(quest_type)
-	else:
-		print('Naughty, not an option! Starting over...')
-		return game_type()
+	# if game_num == 1:
+	# 	game_inf(quest_type)
+	# elif game_num == 2:
+	# 	game_20(quest_type)
+	# else:
+	# 	print('Naughty, not an option! Starting over...')
+	# 	return game_type()
+	print('\ngame_select\n')
+	switcher = {
+		1: game_inf(quest_type),
+		2: game_20(quest_type)
+	}
+
+	return switcher.get(game_num, game_type())
 
 def game_20(quest_type):
 	question_num = input('How many questions do you want to play? ')
@@ -89,7 +97,7 @@ def game_inf(quest_type):
 
 def the_game(number_of_questions, quest_type):
 	# Pull port number resource
-
+	print('\nthe_game\n')
 	page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
 
 	# print(page.status_code) # What is this for? ADD COMMENTS!
@@ -102,6 +110,8 @@ def the_game(number_of_questions, quest_type):
 	length = len(list_it)
 
 	def name_quest(number_of_questions, cool):
+
+		# shifts the question_selection to odd, which is a name quest.
 		def make_odd():
 			question_selector = random.randrange(0, length)
 			if question_selector % 2 == 0:
@@ -117,9 +127,9 @@ def the_game(number_of_questions, quest_type):
 				answer = input(f'what is the port number for the port named {fact}? ')
 				print(f'the answer is {fact_answer}')
 				check = input('play again? (y/n)')
-				return name_quest(number_of_questions, check)
+				return name_quest(False, check)
 			else:
-				pass
+				return 'Goodbye!'
 		else:
 			num = int(number_of_questions)
 			print(f'number_of_questions is {number_of_questions}')
@@ -146,7 +156,7 @@ def the_game(number_of_questions, quest_type):
 				answer = input(f'what is the port name for port number {fact} ')
 				print(f'the answer is {fact_answer}')
 				check = input('play again? (y/n)')
-				return number_quest(number_of_questions, check)
+				return number_quest(False, check)
 			else:
 				pass 
 		else:
@@ -165,9 +175,24 @@ def the_game(number_of_questions, quest_type):
 		print('End of Number Quest')
 
 	def mixed_quest(number_of_questions, cool):
-		if cool == 'y':
-			rand_quest_selector = random.randrange(0, 2)
-			print('rand_quest_selector')
+		high_low = random.randrange(0, 2)
+
+		switchy = {
+			0: name_quest(number_of_questions, cool),
+			1: number_quest(number_of_questions, cool)
+		}
+
+		if number_of_questions == False:
+			if cool == 'y':
+				print(f'test - mixed quest {high_low}')
+				check = input('play again?(y/n)')
+				return mixed_quest(False, check)
+			else:
+				print('Goodbye!')
+		else:
+			pass
+
+		return switchy.get(high_low, 'n/a')
 
 	if quest_type == 1:
 		number_quest(number_of_questions, 'y')
