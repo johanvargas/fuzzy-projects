@@ -6,36 +6,11 @@ from bs4 import BeautifulSoup
 
 """
 
-PORTS of SAN IPANEMA
-v 1.0
+Ports of San IPanema
+version 0.01
 By Johan Alberto Vargas
 
-Things To Add:
-
-	Session view
-		start a game session
-		track right and wrong answers.
-		points system
-		reward system??
-
-	Game platform that compiles a system of learning for user.
-
-	User selects a topic.
-		db created of 
-			factoids
-			flash cards
-			quizes
-			vid references
-			pdf referecnces
-			imgs
-			resources 
-
-Ideas:
-
-	It could learn your learning habits and feed info accordingly.
-
 """
-
 
 def game_type():
 	# The start of the game. Introduces rules and sets up params for play
@@ -61,8 +36,10 @@ def game_type():
 
 	print('\nSelecting game type...\n')
 	if selekt == 1:
+		print('Infinite Game was selected\n')
 		sel1 = game_select(selekt, quest_type)	# Infinite Games
 	elif selekt == 2:
+		print('Numbered Game was selected\n')
 		sel2 = game_select(selekt, quest_type)	# Numbered Games
 	else:
 		print('Naughty, not an option! Starting over...')
@@ -76,7 +53,7 @@ def game_select(game_num, quest_type):
 	# else:
 	# 	print('Naughty, not an option! Starting over...')
 	# 	return game_type()
-	print('\ngame_select\n')
+	print('\ngame_select initiated ... this selects the game size\n')
 	switcher = {
 		1: game_inf(quest_type),
 		2: game_20(quest_type)
@@ -85,33 +62,32 @@ def game_select(game_num, quest_type):
 	return switcher.get(game_num, game_type())
 
 def game_20(quest_type):
+	print(f' game_20 selected, {quest_type}: quest type number ... this then moves to the_game to initiate actual game...\n')
 	question_num = input('How many questions do you want to play? ')
 	print(f'Great,{question_num} questions it is!\n')
 	the_game(question_num, quest_type)
 
 
 def game_inf(quest_type):
+	print(f' game_20 selected, {quest_type}: quest type number ... this then moves to the_game to initiate actual game...\n')
 	print('Ok, lets get started! Good Luck!')
 	the_game(False, quest_type)
 
 
 def the_game(number_of_questions, quest_type):
-	# Pull port number resource
-	print('\nthe_game\n')
+
+	print(f'\nthe_game ---> number of questions : {number_of_questions}, quest type ---> {quest_type}\n')
+
+	# Content for game
 	page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
-
-	# print(page.status_code) # What is this for? ADD COMMENTS!
-	# print(page.content)		# What is this for? ADD COMMENTS!
-
 	soup = BeautifulSoup(page.content, 'html.parser')
-	# soup_table = soup.table 	# What is this for? ADD COMMENTS!
 	spoonful = soup.find_all('td')
 	list_it = list(spoonful)
 	length = len(list_it)
 
 	def name_quest(number_of_questions, cool):
 
-		# shifts the question_selection to odd, which is a name quest.
+		# shifts the question_selection to odd; conversion to name quest.
 		def make_odd():
 			question_selector = random.randrange(0, length)
 			if question_selector % 2 == 0:
@@ -121,18 +97,21 @@ def the_game(number_of_questions, quest_type):
 
 		if number_of_questions == False:
 			if cool == 'y':
+				print('infinite name quest selected')
 				index = make_odd()
 				fact = list_it[index].text
 				fact_answer = list_it[index - 1].text
 				answer = input(f'what is the port number for the port named {fact}? ')
 				print(f'the answer is {fact_answer}')
 				check = input('play again? (y/n)')
+				print(f' answer selected : {check}')
 				return name_quest(False, check)
 			else:
-				return 'Goodbye!'
+				exit()
 		else:
 			num = int(number_of_questions)
 			print(f'number_of_questions is {number_of_questions}')
+			print('numbered name quest selected')
 			
 			while num >= 0:
 				index = make_odd()
@@ -143,25 +122,26 @@ def the_game(number_of_questions, quest_type):
 				print(f'the answer is {fact_answer}')
 				num-=1
 			else:
-				pass
-
-		print('End of Name Quest')
+				exit()
 
 	def number_quest(number_of_questions, cool):
 		if number_of_questions == False:
 			if cool == 'y':
+				print('infinite number quest selected')
 				question_selector = random.randrange(0, length, 2)
 				fact = list_it[question_selector].text
 				fact_answer = list_it[question_selector + 1].text
 				answer = input(f'what is the port name for port number {fact} ')
 				print(f'the answer is {fact_answer}')
 				check = input('play again? (y/n)')
+				print(f' answer selected : {check}')
 				return number_quest(False, check)
 			else:
-				pass 
+				exit()
 		else:
 			num = int(number_of_questions)
 			print(f'number_of_questions is {number_of_questions}')
+			print('numbered number quest selected')
 			while num >= 0:
 				question_selector = random.randrange(0, length, 2)
 				fact = list_it[question_selector].text
@@ -170,29 +150,22 @@ def the_game(number_of_questions, quest_type):
 				print(f'the answer is {fact_answer}')
 				num-=1
 			else:
-				pass
+				exit()
 
 		print('End of Number Quest')
 
 	def mixed_quest(number_of_questions, cool):
+		print('mixed gamed selected')
+		print(f'number_of_questions : {number_of_questions}, cool : {cool}')
 		high_low = random.randrange(0, 2)
 
-		switchy = {
-			0: name_quest(number_of_questions, cool),
-			1: number_quest(number_of_questions, cool)
-		}
+		# switchy = {
+		# 	0: name_quest(number_of_questions, cool),
+		# 	1: number_quest(number_of_questions, cool)
+		# }
 
-		if number_of_questions == False:
-			if cool == 'y':
-				print(f'test - mixed quest {high_low}')
-				check = input('play again?(y/n)')
-				return mixed_quest(False, check)
-			else:
-				print('Goodbye!')
-		else:
-			pass
-
-		return switchy.get(high_low, 'n/a')
+		print(f'{high_low}')
+		return 
 
 	if quest_type == 1:
 		number_quest(number_of_questions, 'y')

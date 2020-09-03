@@ -9,3 +9,38 @@ Port List game : Guessing game for some well-known ports.
 Node Server : Just a server setup for now
 
 Clean Directory : a better method is bash commands like find.
+
+
+Things To Add:
+
+	Session view
+		start a game session
+		track right and wrong answers.
+		points system
+		reward system??
+
+	Game platform that compiles a system of learning for user.
+
+	User selects a topic.
+		db created of 
+			factoids
+			flash cards
+			quizes
+			vid references
+			pdf referecnces
+			imgs
+			resources 
+
+Ideas:
+
+	It could learn your learning habits and feed info accordingly.
+
+
+scraps port-list
+
+
+	# print(page.status_code) # What is this for? ADD COMMENTS!
+	# print(page.content)		# What is this for? ADD COMMENTS!
+
+	# soup_table = soup.table 	# What is this for? ADD COMMENTS!
+
