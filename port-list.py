@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ddddddddd#!/usr/bin/env python3
 import requests
 import random
 import time
@@ -181,6 +181,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
-
-
