@@ -1,4 +1,4 @@
-ddddddddd#!/usr/bin/env python3
+#!/usr/bin/env python3
 import requests
 import random
 import time

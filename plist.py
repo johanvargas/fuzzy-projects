@@ -3,7 +3,8 @@ import requests
 import random
 import time
 from bs4 import BeautifulSoup
-from conversion import full_check
+# from conversion import full_check
+from name_game import name_game
 
 def game_type():
 	print('You have three options:\n')
@@ -14,78 +15,44 @@ def game_type():
 	type_input = input('type?')
 	
 
-	return game_select(type_input, 'Infinite')
+	return game_select(type_input)
 
-def game_select(quest_type, game_size):
-	print(f'game size : {game_size}\nquest type : {quest_type}\n')
-
-	# There needs to be some text cleaning here. Making sure the input is valid.
+def game_select(quest_type):
+	print(f'type : {quest_type}\n')
 
 	def game_setup():
 		# Sets the question and answer for the 'card'
 		game_ = actual_game(quest_type)
 
-		# Helper functions
-
-		def check_ans(ans, key, quest_type):
-			if int(quest_type) == 1:		# Name
-				full_check(ans, key[1])
-				#print(f'Answer -- {game_[1]}')
-			elif int(quest_type) == 2:		# Port
-				print(f'Question -- {game_[1]}')
-				print(f'Answer -- {game_[0]}')
-			elif int(quest_type) == 3:		# Mixed
-				print('Mixed Game')
-				rand_ = random.randrange(0,2)
-				print(f'random number switch {rand_}')
-				if rand_ == 0:		# Name
-					print(f'Question -- {game_[0]}')
-					print(f'Answer -- {game_[1]}')
-				elif rand_ == 1:		# Port
-					print(f'Question -- {game_[1]}')
-					print(f'Answer -- {game_[0]}')
-
-		# End of Helper functions
-
 		# This def needs some cleaning up.
 		# Sets type of game: name, port, mixed
 		if int(quest_type) == 1:		# Name
-			print(f'Question -- {game_[0]}')
-			ans = input('What is the answer? \n')
-			check_ans(ans, game_, quest_type)
-			#print(f'Answer -- {game_[1]}')
+			name_game(game_)
 		elif int(quest_type) == 2:		# Port
-			print(f'Question -- {game_[1]}')
-			print(f'Answer -- {game_[0]}')
+			print('port')
 		elif int(quest_type) == 3:		# Mixed
-			print('Mixed Game')
-			rand_ = random.randrange(0,2)
-			print(f'random number switch {rand_}')
-			if rand_ == 0:		# Name
-				print(f'Question -- {game_[0]}')
-				print(f'Answer -- {game_[1]}')
-			elif rand_ == 1:		# Port
-				print(f'Question -- {game_[1]}')
-				print(f'Answer -- {game_[0]}')
-
-	def actual_game(quest_type):
-		page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
-		soup = BeautifulSoup(page.content, 'html.parser')
-		spoonful = soup.find_all('td')
-		list_it = list(spoonful)
-		length = len(list_it)
-
-		r = random.randrange(0, length)
-		# print(f'game ready for {quest_type} : {r}')
-
-		if r % 2 == 0 :
-			print(list_it[r].text, list_it[r+1].text)
-			return [list_it[r].text, list_it[r+1].text]
-		else:
-			return actual_game(quest_type)
+			print('mixed')
 
 	return game_setup()
 
+def actual_game(quest_type):
+	# Content for game
+
+	page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
+	soup = BeautifulSoup(page.content, 'html.parser')
+	spoonful = soup.find_all('td')
+	list_it = list(spoonful)
+	length = len(list_it)
+
+	r = random.randrange(0, length)
+	
+	# print(f'game ready for {quest_type} : {r}')
+
+	if r % 2 == 0 :
+		print(list_it[r].text, list_it[r+1].text)
+		return [list_it[r].text, list_it[r+1].text]
+	else:
+		return actual_game(quest_type)
 
 def main():
 	print('Welcome... You have docked at the PORT OF SAN IPANEMA!\n')
