@@ -27,15 +27,22 @@ def name_game(game_):
 	print(infinite)
 	print(numbered)
 
-	if infinite == True or numbered > 0:
-		print(f'initial num = {numbered}')
-		print(f'Question -- {game_[0]}')
-		print(f'num = {numbered}')
-		ans = input('What is the answer? \n')
-		check_ans(ans, game_)
-		#print(f'Answer -- {game_[1]}')
-	else:
-		print('error')
+	def play(infinite, numbered):
+
+		if infinite == True or numbered > 0:
+			print(f'initial num = {numbered}')
+			print(f'Question -- {game_[0]}')
+			print(f'num = {numbered}')
+			ans = input('What is the answer? \n')
+			check_ans(ans, game_)
+			#print(f'Answer -- {game_[1]}')
+			play_again = str(input('play again?(y/n)'))
+			if play_again == 'y':
+				return play(infinite, numbered - 1)
+		else:
+			print('error/done')
+
+	play(infinite, numbered)
 
 def check_ans(ans, key):
 	full_check(ans, key[1])
