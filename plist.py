@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
-import requests
 import random
 import time
-from bs4 import BeautifulSoup
-# from conversion import full_check
 from name_game import name_game
 
 def game_type():
@@ -21,38 +18,18 @@ def game_select(quest_type):
 	print(f'type : {quest_type}\n')
 
 	def game_setup():
-		# Sets the question and answer for the 'card'
-		game_ = actual_game(quest_type)
-
 		# This def needs some cleaning up.
 		# Sets type of game: name, port, mixed
 		if int(quest_type) == 1:		# Name
-			name_game(game_)
+			name_game()
 		elif int(quest_type) == 2:		# Port
-			print('port')
+			port_game()
 		elif int(quest_type) == 3:		# Mixed
-			print('mixed')
+			mixed_game()
 
 	return game_setup()
 
-def actual_game(quest_type):
-	# Content for game
 
-	page = requests.get('https://www.webopedia.com/quick_ref/portnumbers.asp')
-	soup = BeautifulSoup(page.content, 'html.parser')
-	spoonful = soup.find_all('td')
-	list_it = list(spoonful)
-	length = len(list_it)
-
-	r = random.randrange(0, length)
-	
-	# print(f'game ready for {quest_type} : {r}')
-
-	if r % 2 == 0 :
-		print(list_it[r].text, list_it[r+1].text)
-		return [list_it[r].text, list_it[r+1].text]
-	else:
-		return actual_game(quest_type)
 
 def main():
 	print('Welcome... You have docked at the PORT OF SAN IPANEMA!\n')

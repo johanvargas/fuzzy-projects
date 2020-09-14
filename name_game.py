@@ -1,6 +1,7 @@
 from conversion import full_check	
 from numbered_game import set_number_of_games
 from infinite_game import set_infinite
+from content import game_content
 
 infinite = False
 numbered = 0
@@ -21,20 +22,21 @@ def select_game_size():
 		numbered = set_number_of_games()
 	return 
 
-def name_game(game_):
+def name_game():
 	select_game_size()
 
 	print(infinite)
 	print(numbered)
 
 	def play(infinite, numbered):
+		game_cont = game_content()
 
 		if infinite == True or numbered > 0:
 			print(f'initial num = {numbered}')
-			print(f'Question -- {game_[0]}')
+			print(f'Question -- {game_cont[0]}')
 			print(f'num = {numbered}')
 			ans = input('What is the answer? \n')
-			check_ans(ans, game_)
+			check_ans(ans, game_cont)
 			#print(f'Answer -- {game_[1]}')
 			play_again = str(input('play again?(y/n)'))
 			if play_again == 'y':
