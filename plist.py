@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
 import random
 import time
 from name_game import name_game
+from port_game import port_game
+from mixed_game import mixed_game
 
 def game_type():
 	print('You have three options:\n')
@@ -11,14 +12,12 @@ def game_type():
 	
 	type_input = input('type?')
 	
-
 	return game_select(type_input)
 
 def game_select(quest_type):
-	print(f'type : {quest_type}\n')
+	print(f'\ntype : {quest_type}\n')
 
 	def game_setup():
-		# This def needs some cleaning up.
 		# Sets type of game: name, port, mixed
 		if int(quest_type) == 1:		# Name
 			name_game()
@@ -28,8 +27,6 @@ def game_select(quest_type):
 			mixed_game()
 
 	return game_setup()
-
-
 
 def main():
 	print('Welcome... You have docked at the PORT OF SAN IPANEMA!\n')

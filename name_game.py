@@ -15,10 +15,10 @@ def select_game_size():
 	selection = int(input('Which one?'))
 	
 	if selection == 1:
-		print('Infinite was selected')
+		print('\nInfinite was selected')
 		infinite = True
 	elif selection == 2:
-		print('Numbered was selected')
+		print('\nNumbered was selected')
 		numbered = set_number_of_games()
 	return 
 
@@ -34,15 +34,15 @@ def name_game():
 		if infinite == True or numbered > 0:
 			print(f'initial num = {numbered}')
 			print(f'Question -- {game_cont[0]}')
-			print(f'num = {numbered}')
+			print(f'num = {numbered}\n')
 			ans = input('What is the answer? \n')
 			check_ans(ans, game_cont)
-			#print(f'Answer -- {game_[1]}')
-			play_again = str(input('play again?(y/n)'))
-			if play_again == 'y':
-				return play(infinite, numbered - 1)
+			if infinite == True:
+				play_again = str(input('play again?(y/n)'))
+				if play_again == 'y':
+					return play(infinite, numbered - 1)
 		else:
-			print('error/done')
+			print(f'You\'ve played all your games {abs(numbered)}, bon voyage!')
 
 	play(infinite, numbered)
 

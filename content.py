@@ -12,8 +12,6 @@ def game_content():
 	length = len(list_it)
 
 	r = random.randrange(0, length)
-	
-	# print(f'game ready for {quest_type} : {r}')
 
 	if r % 2 == 0 :
 		print(list_it[r].text, list_it[r+1].text)
