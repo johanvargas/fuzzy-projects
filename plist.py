@@ -1,3 +1,4 @@
+import sys
 import random
 import time
 from name_game import name_game
@@ -29,6 +30,8 @@ def game_select(quest_type):
 	return game_setup()
 
 def main():
+
+	assert(sys.platform), sys.platform
 	print('Welcome... You have docked at the PORT OF SAN IPANEMA!\n')
 	print('Select a Game Type:\n')
 	game_type()

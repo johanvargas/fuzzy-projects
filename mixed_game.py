@@ -34,7 +34,7 @@ def mixed_game():
 
 		if infinite == True or numbered > 0:
 			rand_ = random.randrange(0,2)
-			print(f'random number switch {rand_}')
+			print(f'random number switch {rand_}\n')
 			if rand_ == 0:				# Name
 				print(f'Question -- {game_cont[0]}')
 				ans = input('What is the answer? \n')
@@ -45,7 +45,7 @@ def mixed_game():
 				check_ans(ans, game_cont)
 			return play(infinite, numbered - 1)
 		else:
-			print(f'You\'ve played all your games {abs(numbered)}, bon voyage!')
+			print(f'You have {abs(numbered)} games left, buck up or bon voyage!')
 
 	play(infinite, numbered)
 
