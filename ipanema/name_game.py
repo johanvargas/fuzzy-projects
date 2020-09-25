@@ -4,11 +4,10 @@ from infinite_game import set_infinite
 from content import game_content
 from select_game import select_game_size
 
-
 infinite = False
 numbered = 0
 
-def port_game():
+def name_game():
 	select_game_size()
 
 	print(infinite)
@@ -19,8 +18,8 @@ def port_game():
 
 		if infinite == True or numbered > 0:
 			print(f'initial num = {numbered}')
-			print(f'Question -- {game_cont[1]}')
-			print(f'num = {numbered}')
+			print(f'Question -- {game_cont[0]}')
+			print(f'num = {numbered}\n')
 			ans = input('What is the answer? \n')
 			check_ans(ans, game_cont)
 			if infinite == True:
@@ -49,4 +48,5 @@ def select_game_size():
 		return
 
 def check_ans(ans, key):
-	full_check(ans, key[0])
+	full_check(ans, key[1])
+

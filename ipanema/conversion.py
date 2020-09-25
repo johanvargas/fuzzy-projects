@@ -1,5 +1,4 @@
 def full_check(ans, key):
-	
 	print(f'full_check... answer : {ans} -- key {key}')
 	inner_ans = str(ans)
 	inner_key = str(key)
