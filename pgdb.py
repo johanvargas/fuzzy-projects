@@ -10,20 +10,13 @@ def connect():
 
 	try:
 		params = config()
-
 		print('Connecting to the PostgreSQL db...')
 		conn = psycopg2.connect(**params)
-
-
 		cur = conn.cursor()
-
 		print('PostgreSQL db version:')
 		cur.execute('SELECT version()')
-
 		db_version = cur.fetchone()
 		print(db_version)
-
-
 		cur.close()
 
 

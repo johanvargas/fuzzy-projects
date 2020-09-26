@@ -1,4 +1,3 @@
-# base 64 decoder
 import base64
 import sys
 print sys.getdefaultencoding()
