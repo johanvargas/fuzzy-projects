@@ -20,10 +20,15 @@ def connect():
 		print('Connecting to the PostgreSQL db...')
 		conn = psycopg2.connect(**params)
 		cur = conn.cursor()
-		print('PostgreSQL db version:')
-		cur.execute('SELECT version()')
-		db_version = cur.fetchone()
-		print(db_version)
+		
+		# print('PostgreSQL db version:')
+		# cur.execute('SELECT version()')
+		# db_version = cur.fetchone()
+		# print(db_version)
+		
+		cur.execute("INSERT INTO item (name, description, price, images, status) VALUES('Music Man Bass', '5-string black, Active Pickups', 200.00, 'no images yet', 'on sale');")
+		conn.commit()
+		print('Item added succesfully.')
 		cur.close()
 
 	except (Exception, psycopg2.DatabaseError) as error:
