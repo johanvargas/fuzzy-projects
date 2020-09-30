@@ -1,0 +1,10 @@
+# Create item table for inventory db
+
+CREATE TABLE item (
+	ID INT PRIMARY KEY	NOT NULL,
+	NAME	       TEXT	NOT NULL,
+	DESCRIPTION    CHAR(120),
+	PRICE	       FLOAT,
+	IMAGES	       TEXT,
+	STATUS	       TEXT,
+);
