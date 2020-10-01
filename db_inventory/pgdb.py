@@ -24,7 +24,8 @@ def connect():
 		cur = conn.cursor()
 		
 		# get_version(cur)
-		add_row(conn, cur)
+		add_row(conn, cur, )
+
 		# # select postgres version
 		# print('PostgreSQL db version:')
 		# cur.execute('SELECT version()')
@@ -52,11 +53,11 @@ def get_version(cur):
 		db_version = cur.fetchone()
 		print(db_version)
 
-def add_row(conn, cur):
-		# add row to item table 
-		cur.execute(
-			"INSERT INTO item (name, description, price, images, status) VALUES('Acoutic Washburn', '6-string jumbo body, electric/plugin', 140.00, 'no images yet', 'on sale');"
-			)
+def add_row(conn, cur, data):
+		# add row to item table
+		data = (data, )
+		sql = "INSERT INTO item (name, description, price, images, status) VALUES(data);" 
+		cur.execute(sql, data)
 		conn.commit()
 		print('Item added succesfully.')
 		cur.close()
