@@ -6,37 +6,7 @@ from PIL import Image
 Brute-forcey way of checking if two image histograms are equal, 
 that is, if they are the same image. 
 
-######
-
-References and extra crap
-^^^^^^^^^^^^^^^^^^^^^^^^
-opens image in preview
-im1.show()
-im2.show()
-
-returns a list of values, length = 758 
-histo1 = im1.histogram()
-histo2 = im2.histogram()
-
-returning NoneType
-histo1 = im1.getcolors()
-histo2 = im2.getcolors()
-
-(r, b, g) dump
-s = im2.getdata()
-
-
-
-def open_image(image):
-	return Image.open(image)
-
-image.histogram()
-
 '''
-
-image1 = 'MeatMurder'
-image2 = 'Prince_Around'
-image3 = 'cosmic_thing'
 
 list_test = [4, 6 ,7, 4,'12', 5, 4]
 ans = []
@@ -74,3 +44,33 @@ _set = compare(image1, image2, image3)
 comp = compare_items(list_test)
 print(comp)
 # print(_set)
+
+
+'''
+
+References and extra crap
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+opens image in preview
+im1.show()
+im2.show()
+
+returns a list of values, length = 758 
+histo1 = im1.histogram()
+histo2 = im2.histogram()
+
+returning NoneType
+histo1 = im1.getcolors()
+histo2 = im2.getcolors()
+
+(r, b, g) dump
+s = im2.getdata()
+
+
+
+def open_image(image):
+	return Image.open(image)
+
+image.histogram()
+
+'''
