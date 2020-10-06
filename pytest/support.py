@@ -26,26 +26,35 @@ discogs-images/R-951365-1236876316.jpeg.jpg'
 # create images/
 def make_dir():
 	# creates dir with root as owner, should be changed.
-	os.mkdir('images', 755)
+	os.mkdir('images')
 
 # download file from internet and add to images/
 def populate_dir():
 	population = os.getcwd()
+	print(population)
 	new_dir = os.chdir('images')
 	new_pop = os.getcwd()
+	print(new_pop)
 	pop_size = len(os.listdir())
-	print(pop_size)
 
-	# requests get method on url
-	# r = requests.get(url)
+	if pop_size == 0:
+		# request url and cleanup 
+		for item in images:
+			r = requests.get(images[item])
+			filename = images[item].split('/')[-1]
+			with open(filename, 'wb') as output_file:
+				output_file.write(r.content)
 
-	# clean up url, lose everything but filename
-	# filename = url.split('/')[-1]
+			# rename jpg for proper use in mypillow.py
+			proper_name = item + '.jpg'
+			os.rename(filename, proper_name)
 
-	# with open(filename, 'wb') as output_file:
-	# 	output_file.write(r.content)
+			print('download complete.')
+	else:
+		print(os.listdir()) 
+		pass
 
-	# print('download complete.')
+
 
 	# image_loc = f'{cwd}/{image[0]}.jpg'
 
@@ -54,27 +63,32 @@ def populate_dir():
 
 # check to see if images/ exists, if not create
 def check_image_dir():
-	present = False
+	dir_present = False
+	img_present = False
+
+	def check_dir_size():
+		# new_dir = os.chdir('images')
+		pop_size = len(os.listdir())
+		return pop_size
 
 	for item in CURRENT_DIR:
 		if item != DIR_NAME:
 			pass
 		else:
 			print('images/ already exists!')
-			present = True
-			# check to see if images/ is filled with correct images,
-			# if not, download to directory
+			dir_present = True
 
-
-	if present == False:
+	if dir_present == False:
+		print('no images directory found, creating one...')
 		make_dir()
-
-	if present == True:
 		populate_dir()
+
+	if dir_present == True:
+		print('images directory exists, your good to go.')
 
 	return
 
-
-# TESTS
-
-check_image_dir()
+# returns <class 'dict_item'>, a tuple per dict item?
+def get_images():
+	my_images = images.items()
+	return my_images
