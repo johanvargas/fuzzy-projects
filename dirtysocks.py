@@ -1,3 +1,4 @@
+# basic socket usage
 import socket
 
 socket.setdefaulttimeout(2)
