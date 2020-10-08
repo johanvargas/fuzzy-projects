@@ -4,7 +4,7 @@ import requests
 
 CWD 		= os.getcwd()
 CURRENT_DIR = os.listdir(CWD)
-DIR_NAME 	= 'images'
+IMG_DIR_NAME 	= 'images'
 
 images = {
 'MeatMurder': 
@@ -26,13 +26,13 @@ discogs-images/R-951365-1236876316.jpeg.jpg'
 # create images/
 def make_dir():
 	# creates dir with root as owner, should be changed.
-	os.mkdir('images')
+	os.mkdir(IMG_DIR_NAME)
 
 # download file from internet and add to images/
 def populate_dir():
 	population = os.getcwd()
 	print(population)
-	new_dir = os.chdir('images')
+	new_dir = os.chdir(IMG_DIR_NAME)
 	new_pop = os.getcwd()
 	print(new_pop)
 	pop_size = len(os.listdir())
@@ -72,7 +72,7 @@ def check_image_dir():
 		return pop_size
 
 	for item in CURRENT_DIR:
-		if item != DIR_NAME:
+		if item != IMG_DIR_NAME:
 			pass
 		else:
 			print('images/ already exists!')
@@ -84,7 +84,7 @@ def check_image_dir():
 		populate_dir()
 
 	if dir_present == True:
-		print('images directory exists, your good to go.')
+		print('Your good to go.')
 
 	return
 

@@ -1,6 +1,6 @@
-import collections
+import os, sys, collections
 from PIL import Image
-from support import check_image_dir, get_images
+from support import check_image_dir, get_images, CWD, CURRENT_DIR, IMG_DIR_NAME
 
 '''
 
@@ -8,47 +8,48 @@ Brute-forcey way of checking if two image histograms are equal,
 that is, if they are the same image. 
 
 '''
-# setup content
-
+# setup support content
 check_image_dir()
 
-# list_test = [4, 6 ,7, 4,'12', 5, 4]
-# ans = []
-
-# def compare_items(l):
-# 	# if collections.Counter(docket) == collections.Counter(image):
-# 	while len(l) > 0:
-# 		for n in range(1, len(l)):
-# 			print(l, l[n])
-# 			if l[0] == l[n]:
-# 				print(l[0], l[n])
-# 				ans.append(f'Found an equal at {l[0]}')
-# 			else:
-# 				pass
-# 		l.remove(l[0])
-# 		print('\n')
-# 		return compare_items(l)
-# 	return ans
 
 
 
-# def compare(*args):
-# 	l = []
-# 	for e in args:
-# 		img_location = f'images/{e}.jpg'
-# 		open_img = Image.open(img_location)
-# 		histo = open_img.histogram()
-# 		l.append(histo)
+def get_histograms():
+	os.chdir(IMG_DIR_NAME)
+	print(os.getcwd())
+	
+	image_list = os.listdir()
+	print(image_list)
 
-# 	return l
+	l = []
+	for e in image_list:
+		open_img = Image.open(e)
+		histo = open_img.histogram()
+		t = (e, histo)
+		l.append(t)
+
+	return l
+
+def compare_histograms(img_list):
+	l = [] 
+	# print('\n')
+	for i, j in img_list:
+		# print(i)
+		for b, c in img_list:
+			# print(i, b)
+			if collections.Counter(j) == collections.Counter(c) and i != b:
+				print(f'{i} and {b} are equal')
+		img_list.remove(img_list[0])
+		return compare_histograms(img_list)
 
 
-# _set = compare(image1, image2, image3)
 
-# comp = compare_items(list_test)
-# print(comp)
-# print(_set)
 
+# TESTS
+
+histograms = get_histograms()
+compare = compare_histograms(histograms)
+print(compare)
 
 '''
 
@@ -76,5 +77,33 @@ def open_image(image):
 	return Image.open(image)
 
 image.histogram()
+
+	# while len(img_list) > 0:f
+	# 	for image in img_list:
+	# 		print(image[0])
+	# 		for i in range(len(img_list) - 1):
+	# 			print (image[0], image[i][0])
+	# if collections.Counter(image_1) == collections.Counter(image_2):
+	# 	t = tuple(image[], image[])
+	# 	print('ok, we are in the money')
+	# else:
+	# 	print('they are NOT the same')
+
+# list_test = [4, 6 ,7, 4,'12', 5, 4]
+# ans = []
+
+# def compare_items(l):
+# 	while len(l) > 0:
+# 		for n in range(1, len(l)):
+# 			print(l, l[n])
+# 			if l[0] == l[n]:
+# 				print(l[0], l[n])
+# 				ans.append(f'Found an equal at {l[0]}')
+# 			else:
+# 				pass
+# 		l.remove(l[0])
+# 		print('\n')
+# 		return compare_items(l)
+# 	return ans
 
 '''
