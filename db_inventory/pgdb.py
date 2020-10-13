@@ -9,8 +9,10 @@
 # or string parameters interpolation (%) to pass variables to a 
 # SQL query string. Not even at gunpoint.
 
-# only working with one table, inventory, right now
+# only working with one table, item, right now
 # this all needs to be transfered to a html doc for human friendly display
+# These are all 'provisional' sql functions, until I have a better model,
+# or until I decide to completely shift to Django/PostGreSQL
 
 import psycopg2
 from config import config
@@ -22,32 +24,52 @@ def get_version(cur):
 		db_version = cur.fetchone()
 		print(db_version)
 
-# INSERT (create)
-def add_row(conn, cur, data):
-		# add row to item table
-		sql = f"INSERT INTO item (name, description, price, images, status) VALUES{data};" 
-		cur.execute(sql, data)
-		conn.commit()
-		print('Item added succesfully.')
-		cur.close()
 
-# Get row data (read)
-def get_row():
-	pass
+def add_row(conn, cur):
+	# INSERT (create)
+	# add row to item table
+	data = 'Princess Leia', '3 inches, Obiwone Plea Outfit', 234.60, 'no images yet', 'on sale'
+	sql = f'INSERT INTO item (name, description, price, images, status) VALUES {data}'
+	cur.execute(sql, data)
+	conn.commit()
+	print('Item added succesfully.')
+	cur.close()
 
-# update row (update)
-# UPDATE datacamp_courses SET course_name = 'Joining Data in SQL'
-# WHERE course_instructor = 'Chester Ismay';
+
+def get_row(conn, cur):
+	# Get row data (read), based on id number
+	data = 0
+	sql = f'SELECT * FROM item WHERE id={data}'
+	cur.execute(sql, data)
+	conn.commit()
+	print('Item added succesfully.')
+	cur.close()
+
 
 def update_row():
-	pass
+	# update row (update)
+	# UPDATE datacamp_courses SET course_name = 'Joining Data in SQL'
+	# WHERE course_instructor = 'Chester Ismay';
+	data = ''
+	row = 0
+	sql = f'UPDATE item SET description={data} WHERE id={row}'
+	cur.execute(sql, data)
+	conn.commit()
+	print('Item added succesfully.')
+	cur.close()
 
-# delete row (delete)
-# DELETE from datacamp_courses
-# WHERE course_name = 'Deep Learning in Python';
 
-def delete_row():
-	pass
+def delete_row(conn, cur, data):
+	# delete row (delete)
+	# DELETE from datacamp_courses
+	# WHERE course_name = 'Deep Learning in Python';
+	data=
+	sql = f'DELETE from item WHERE id={data}'
+	cur.execute(sql, data)
+	conn.commit()
+	print('Item deleted succesfully.')
+	cur.close()
+
 
 def connect():
 	''' Connect to PostgreSQL db server '''
@@ -59,25 +81,9 @@ def connect():
 		print('Connecting to the PostgreSQL db...')
 		conn = psycopg2.connect(**params)
 		cur = conn.cursor()
-
-		data = 'Darth Vader Action Figure', '3 1\2 inch, missing weapons', 100.00, 'no images yet', 'on sale'
 		
 		# get_version(cur)
-		add_row(conn, cur, data)
-
-		###### Direct Examples - don't use, use the functions for each of the CRUD methods #######
-		# # select postgres version
-		# print('PostgreSQL db version:')
-		# cur.execute('SELECT version()')
-		# db_version = cur.fetchone()
-		# print(db_version)
-		
-		# # add row to item table 
-		# cur.execute("INSERT INTO item (name, description, price, images, status) VALUES('Darth Vader Action Figure', '3 1\\2 inch, missing weapons', 100.00, 'no images yet', 'on sale');")
-		# conn.commit()
-		# print('Item added succesfully.')
-		# cur.close()
-		####### END ##################
+		add_row(conn, cur)
 
 	except (Exception, psycopg2.DatabaseError) as error:
 		print(error)
@@ -87,5 +93,4 @@ def connect():
 			conn.close()
 			print('Database connection is closed.')
 		
-if __name__ == '__main__':
-	connect() 
+# ec 
