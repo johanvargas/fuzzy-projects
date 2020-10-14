@@ -38,15 +38,16 @@ def add_row(conn, cur):
 
 def get_row(conn, cur):
 	# Get row data (read), based on id number
-	data = 0
-	sql = f'SELECT * FROM item WHERE id={data}'
+	data = input('Select an ID number: ')
+
+	sql = ('SELECT * FROM item WHERE id=%s', (data,))
 	cur.execute(sql, data)
 	conn.commit()
 	print('Item added succesfully.')
 	cur.close()
 
 
-def update_row():
+def update_row(conn, cur):
 	# update row (update)
 	# UPDATE datacamp_courses SET course_name = 'Joining Data in SQL'
 	# WHERE course_instructor = 'Chester Ismay';
@@ -59,11 +60,11 @@ def update_row():
 	cur.close()
 
 
-def delete_row(conn, cur, data):
+def delete_row(conn, cur):
 	# delete row (delete)
 	# DELETE from datacamp_courses
 	# WHERE course_name = 'Deep Learning in Python';
-	data=
+	data= ''
 	sql = f'DELETE from item WHERE id={data}'
 	cur.execute(sql, data)
 	conn.commit()
@@ -92,5 +93,3 @@ def connect():
 		if conn is not None:
 			conn.close()
 			print('Database connection is closed.')
-		
-# ec 
