@@ -1,7 +1,7 @@
 import psycopg2
 from config import config
 
-def update_data():
+def add_data():
 	''' Connect to PostgreSQL db server '''
 	
 	conn = None
@@ -13,7 +13,7 @@ def update_data():
 		cur = conn.cursor()
 		
 		# get_version(cur)
-		update_row(conn, cur)
+		add_row(conn, cur)
 
 	except (Exception, psycopg2.DatabaseError) as error:
 		print(error)
@@ -23,13 +23,11 @@ def update_data():
 			conn.close()
 			print('Database connection is closed.')
 
-def update_row(conn, cur):
-	# update row (update)
-	# UPDATE datacamp_courses SET course_name = 'Joining Data in SQL'
-	# WHERE course_instructor = 'Chester Ismay';
-	data = input('')
-	row = 0
-	cur.execute('UPDATE item SET description = %s WHERE name = ', (data, ))
+def add_row(conn, cur):
+	# INSERT (create)
+	# add row to item table
+	data = ''
+	cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', (data, ))
 	conn.commit()
 	print('Item added succesfully.')
 	cur.close()

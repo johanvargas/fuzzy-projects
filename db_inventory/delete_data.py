@@ -1,7 +1,7 @@
 import psycopg2
 from config import config
 
-def update_data():
+def delete_data():
 	''' Connect to PostgreSQL db server '''
 	
 	conn = None
@@ -13,7 +13,7 @@ def update_data():
 		cur = conn.cursor()
 		
 		# get_version(cur)
-		update_row(conn, cur)
+		delete_row(conn, cur)
 
 	except (Exception, psycopg2.DatabaseError) as error:
 		print(error)
@@ -23,13 +23,12 @@ def update_data():
 			conn.close()
 			print('Database connection is closed.')
 
-def update_row(conn, cur):
-	# update row (update)
-	# UPDATE datacamp_courses SET course_name = 'Joining Data in SQL'
-	# WHERE course_instructor = 'Chester Ismay';
-	data = input('')
-	row = 0
-	cur.execute('UPDATE item SET description = %s WHERE name = ', (data, ))
+def delete_row(conn, cur):
+	# delete row (delete)
+	# DELETE from datacamp_courses
+	# WHERE course_name = 'Deep Learning in Python';
+	data= ''
+	cur.execute('DELETE from item WHERE id=%s', (data, ))
 	conn.commit()
-	print('Item added succesfully.')
+	print('Item deleted succesfully.')
 	cur.close()
