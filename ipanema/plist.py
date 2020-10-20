@@ -1,3 +1,10 @@
+"""
+
+Ports of San IPanema
+version 0.01
+By Johan Alberto Vargas
+
+"""
 import sys
 import random
 import time
@@ -11,7 +18,7 @@ def game_type():
 	print('Port Game - Where you number the name (Enter 2)')
 	print('Mixed Game - Where you randomly get either one (Enter 3)\n')
 	
-	type_input = input('type?')
+	type_input = input('What\'s your journey?')
 	
 	return game_select(type_input)
 
@@ -31,7 +38,7 @@ def game_select(quest_type):
 
 def main():
 
-	print('Welcome... You have docked at the PORT OF SAN IPANEMA!\n')
+	print('Welcome... You have docked at the PORT OF IPANEMA!\n')
 	print('Select a Game Type:\n')
 	game_type()
 

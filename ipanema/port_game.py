@@ -2,9 +2,7 @@ from conversion import full_check
 from numbered_game import set_number_of_games
 from infinite_game import set_infinite
 from content import game_content
-
-infinite = False
-numbered = 0
+from select_game_size import select_game_size
 
 def port_game():
 	select_game_size()

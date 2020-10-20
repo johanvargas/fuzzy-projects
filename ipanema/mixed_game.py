@@ -2,26 +2,8 @@ from conversion import full_check
 from numbered_game import set_number_of_games
 from infinite_game import set_infinite
 from content import game_content
+from select_game_size import select_game_size
 import random
-
-infinite = False
-numbered = 0
-
-def select_game_size():
-	global infinite
-	global numbered
-	print('Now, select your games size:\n')
-	print('Enter 1 for Infinite games')
-	print('Enter 2 to select the number of games you want to play\n')
-	selection = int(input('Which one?'))
-	
-	if selection == 1:
-		print('\nInfinite was selected')
-		infinite = True
-	elif selection == 2:
-		print('\nNumbered was selected')
-		numbered = set_number_of_games()
-	return 
 
 def mixed_game():
 	select_game_size()
@@ -52,8 +34,3 @@ def mixed_game():
 
 def check_ans(ans, key):
 	print('not done')
-
-	# if rand_ == 0:		# Name
-	# 	full_check(ans, key[1])
-	# elif rand_ == 1:	# Port
-	# 	full_check(ans, key[0])
