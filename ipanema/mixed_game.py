@@ -9,27 +9,40 @@ def mixed_game():
 	game_type = select_game_size()
 
 	def play(game_type):
-		game_cont = game_content()
 
-		print(game_cont)
+		print('Game Type', game_type)
 
-		if game_type == True or game_type > 0:
-			rand_ = random.randrange(0,2)
-			print(f'random number switch {rand_}\n')
-			if rand_ == 0:				# Name
-				print(f'Question -- {game_cont[0]}')
-				ans = input('What is the answer? \n')
-				check_ans(ans, game_cont)
-			elif rand_ == 1:		# Port
-				print(f'Question -- {game_cont[1]}')
-				ans = input('What is the answer? \n')
-				check_ans(ans, game_cont)
-			return play(game_type or game_type - 1)
-		else:
-			print(f'You have {abs(numbered)} games left, buck up or bon voyage!')
+		if game_type[0] == 'Infinite' and game_type[1] == True:
+			print('Infinite Selected')
+			
+			mixed_game_module(game_type)
+			q = input('Do you want to continue?\n(Enter yes to continue, anything else to exit)	')
+			if q == 'yes':
+				return play(game_type)
+			else:
+				game_type[1] = False 
+
+		if game_type[0] == 'Numbered' and game_type[1] == True:
+			num = set_number_of_games()
+			print('Numbered Selected')
+			print('Number of games is ', num)
+			while num > 0:
+				mixed_game_module(game_type)
+				num -= 1
 
 	play(game_type)
 
-
-def check_ans(ans, key):
-	full_check(ans, key[1])
+def mixed_game_module(game_type):
+	game_cont = game_content()
+	print('Game Answers', game_cont)
+	rand_ = random.randrange(0,2)
+	if rand_ == 0:
+	# Name
+		print(f'Question -- {game_cont[0]}')
+		ans = input('What is the answer?	\n')
+		full_check(ans, game_cont[1])
+	elif rand_ == 1:		
+	# Port
+		print(f'Question -- {game_cont[1]}')
+		ans = input('What is the answer?	\n')
+		full_check(ans, game_cont[0])
