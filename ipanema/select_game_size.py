@@ -1,3 +1,5 @@
+from numbered_game import set_number_of_games
+
 def select_game_size():
 	infinite = False
 	numbered = 0

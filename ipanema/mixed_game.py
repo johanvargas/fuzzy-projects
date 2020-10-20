@@ -6,15 +6,14 @@ from select_game_size import select_game_size
 import random
 
 def mixed_game():
-	select_game_size()
+	game_type = select_game_size()
 
-	print(infinite)
-	print(numbered)
-
-	def play(infinite, numbered):
+	def play(game_type):
 		game_cont = game_content()
 
-		if infinite == True or numbered > 0:
+		print(game_cont)
+
+		if game_type == True or game_type > 0:
 			rand_ = random.randrange(0,2)
 			print(f'random number switch {rand_}\n')
 			if rand_ == 0:				# Name
@@ -25,12 +24,12 @@ def mixed_game():
 				print(f'Question -- {game_cont[1]}')
 				ans = input('What is the answer? \n')
 				check_ans(ans, game_cont)
-			return play(infinite, numbered - 1)
+			return play(game_type or game_type - 1)
 		else:
 			print(f'You have {abs(numbered)} games left, buck up or bon voyage!')
 
-	play(infinite, numbered)
+	play(game_type)
 
 
 def check_ans(ans, key):
-	print('not done')
+	full_check(ans, key[1])

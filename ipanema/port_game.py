@@ -5,10 +5,8 @@ from content import game_content
 from select_game_size import select_game_size
 
 def port_game():
-	select_game_size()
-
-	print(infinite)
-	print(numbered)
+	game_type = select_game_size()
+	print(game_type)
 
 	def play(infinite, numbered):
 		game_cont = game_content()
