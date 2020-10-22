@@ -32,7 +32,7 @@ def port_game():
 
 def port_game_module(game_type):
 	game_cont = game_content()
-	print('Game Answers', game_cont)
-	print(f'Question -- {game_cont[1]}')
+	# print('Game Answers', game_cont)
+	print(f'What\'s the port that runs the service named {game_cont[1]}')
 	ans = input('What is the answer?	\n')
 	full_check(ans, game_cont[0])

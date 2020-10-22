@@ -13,7 +13,7 @@ def mixed_game():
 		# print('Game Type', game_type)
 
 		if game_type[0] == 'Infinite' and game_type[1] == True:
-			print('Infinite Selected')
+			# print('Infinite Selected')
 			
 			mixed_game_module(game_type)
 			q = input('Do you want to continue?\n(Enter to continue, anything else to exit)	')
@@ -24,8 +24,8 @@ def mixed_game():
 
 		if game_type[0] == 'Numbered' and game_type[1] == True:
 			num = set_number_of_games()
-			print('Numbered Selected')
-			print('Number of games is ', num)
+			# print('Numbered Selected')
+			# print('Number of games is ', num)
 			while num > 0:
 				mixed_game_module(game_type)
 				num -= 1
@@ -38,11 +38,11 @@ def mixed_game_module(game_type):
 	rand_ = random.randrange(0,2)
 	if rand_ == 0:
 	# Name
-		print(f'Question -- {game_cont[0]}')
+		print(f'What\'s the service on port number {game_cont[0]}')
 		ans = input('What is the answer?	\n')
 		full_check(ans, game_cont[1])
 	elif rand_ == 1:		
 	# Port
-		print(f'Question -- {game_cont[1]}')
+		print(f'What\'s the port for {game_cont[1]}')
 		ans = input('What is the answer?	\n')
 		full_check(ans, game_cont[0])

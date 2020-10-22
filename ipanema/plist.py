@@ -1,8 +1,10 @@
 """
 
-Ports of San IPanema
+Ports of Ipanema
 version 0.01
 By Johan Alberto Vargas
+
+* logo, artist unknown
 
 """
 import sys
@@ -49,7 +51,7 @@ def main():
   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
     ^^^^      ^^^^     ^^^    ^^
          ^^^^      ^^^
-	'''
+'''
 	print('\nWELCOME... You have docked at the PORT OF IPANEMA!\n')
 	print(logo)
 	print('Now select your game type\n')

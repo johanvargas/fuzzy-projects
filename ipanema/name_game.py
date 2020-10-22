@@ -33,7 +33,7 @@ def name_game():
 def name_game_module(game_type):
 	game_cont = game_content()
 	print('Game Answers', game_cont)
-	print(f'Question -- {game_cont[0]}')
+	print(f'What\'s the service on port number {game_cont[0]}')
 	ans = input('What is the answer?	\n')
 	full_check(ans, game_cont[1])
 
