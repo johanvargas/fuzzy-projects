@@ -39,8 +39,20 @@ def game_select(quest_type):
 	return game_setup()
 
 def main():
+	logo = '''
+              |    |    |                 
+             )_)  )_)  )_)              
+            )___))___))___)\            
+           )____)____)_____)\\
+         _____|____|____|____\\\__
+---------\                   /---------
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+    ^^^^      ^^^^     ^^^    ^^
+         ^^^^      ^^^
+	'''
 	print('\nWELCOME... You have docked at the PORT OF IPANEMA!\n')
-	print('Select a Game Type:\n')
+	print(logo)
+	print('Now select your game type\n')
 	game_type()
 
 if __name__ == '__main__':

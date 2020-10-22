@@ -10,14 +10,14 @@ def mixed_game():
 
 	def play(game_type):
 
-		print('Game Type', game_type)
+		# print('Game Type', game_type)
 
 		if game_type[0] == 'Infinite' and game_type[1] == True:
 			print('Infinite Selected')
 			
 			mixed_game_module(game_type)
-			q = input('Do you want to continue?\n(Enter yes to continue, anything else to exit)	')
-			if q == 'yes':
+			q = input('Do you want to continue?\n(Enter to continue, anything else to exit)	')
+			if not q:
 				return play(game_type)
 			else:
 				game_type[1] = False 

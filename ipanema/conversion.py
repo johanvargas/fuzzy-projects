@@ -1,6 +1,6 @@
 def full_check(ans, key):
-	print(f'full_check... answer : {ans} -- key {key}')
+	# print(f'full_check... answer : {ans} -- key {key}')
 	if ans == key:
-		print('correct')
+		print('Correct!')
 	else:
-		print('incorrect')
+		print('Wah Wah, you suck, try again...')
