@@ -10,7 +10,7 @@ Node Server : Just a server setup for now
 
 Clean Directory : a better method is bash commands like find.
 
-
+IPANEMA
 Things To Add:
 
 	Session view
@@ -18,6 +18,9 @@ Things To Add:
 		track right and wrong answers.
 		points system
 		reward system??
+
+		A cheat option, to check answers.
+		I'd like to animate th ascii art.
 
 	Game platform that compiles a system of learning for user.
 
@@ -35,12 +38,4 @@ Ideas:
 
 	It could learn your learning habits and feed info accordingly.
 
-
-scraps port-list
-
-
-	# print(page.status_code) # What is this for? ADD COMMENTS!
-	# print(page.content)		# What is this for? ADD COMMENTS!
-
-	# soup_table = soup.table 	# What is this for? ADD COMMENTS!
 
