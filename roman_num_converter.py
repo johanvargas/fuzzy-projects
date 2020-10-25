@@ -3,7 +3,13 @@ import random
 
 '''
 feed this thing a number (int) and it will output a roman numeral equivalent.
+
+THIS SHIT IS FUCKED.
+
+
+
 '''
+
 NUMERALS = ['M', 'C', 'X', 'I']
 PENTAS = ['(VM)', 'D', 'L', 'V']
 key = [None, None, None]
@@ -13,10 +19,13 @@ container2 = []
 
 def get_num(num):
 	# print('get_num running...')
-
 	x = list(str(num))
 	x.reverse()
 	return x
+
+get_num_var = get_num(30)
+
+print(get_num_var)
 
 def get_key(base_position, NUMERALS):
 	# base position dictates the x1 x5 x10 it uses.
@@ -25,15 +34,8 @@ def get_key(base_position, NUMERALS):
 	return NUMERALS[-(base_position)]
 
 def set_key_test(numeral, base_pos):
-	'''
-	original on single.py
-	Basic version to get fucntionality but not extensible beyond 10,000??
-	missing function of using 'key' over later iterations on higher numbers
-	plus adding high number(vinculus etc...) symbols to appropriate entries
-	'''
 	# print('set_key_test...\n')
 	key = [None, None, None]
-	# l = lambda x : True if base_pos > 4 else False
 	l = lambda x: -2 if x == 4 else -(x + 1) 
 	for n in NUMERALS:
 		if numeral == n:
@@ -44,10 +46,6 @@ def set_key_test(numeral, base_pos):
 			key[1] = PENTAS[-(base_pos)]
 			key[2] = NUMERALS[l(base_pos)]
 	return key
-
-# def run_table(lst, key, count):
-# 	print('run_table...')
-# 	return
 
 def table(digit, key):
 	if digit == 0:
@@ -98,14 +96,6 @@ def convert(lst, count):
 		
 
 	return convert(lst, count + 1)
-r = random.randint(0, 10000)
-g = get_num(r)
-p = convert(g, 0)
-# print(p)
-# print(container)
-# g.reverse()
-print(r)
-
 
 def clean_container(container):
 	for i in container:
@@ -113,15 +103,20 @@ def clean_container(container):
 			container.remove(i)
 	return container
 
-
-
 def print_num(clean_container, get_num):
 	for t in range(len(get_num)):
 		# print(table(get_num[t], clean_container[int(t)]))
 		container2.append(table(get_num[t], clean_container[int(t)]))
 
+r = random.randint(0, 10000)
+g = get_num(r)
+p = convert(g, 0)
+# print(p)
+# print(container)
+# g.reverse()
+print(r)
 clean = clean_container(container)
-# print(clean)
+print(clean)
 p = print_num(clean, g)
 container2.reverse()
 j = ''.join(container2)
