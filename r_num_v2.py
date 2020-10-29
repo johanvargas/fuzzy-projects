@@ -1,14 +1,20 @@
 '''
 
-Roman Numeral Converter v 0.02
+Integer to Roman Numeral version 0.02
 by Johan Vargas
+10292020
 
-___WORKING NOTES_____
+###############################################################
 
-Working up to 1,000,000, produces string of int passed. 
+WORKING NOTES
 
-BUG - Assigns multiplier (MILIMULTIPLIER) to repeats in the int.
-________
+Working up to 1,000,000, produces string from int passed. 
+
+int_to_key needs to be handled batter, iterator or something.
+
+###############################################################
+
+REFERENCES
 
 I = 1
 
@@ -27,38 +33,6 @@ M = 1000
 _V = 5000
 
 _, is the line over the Numeral that equal Numeral X 1000 = _Numeral
-
-numeral_key = {0: 'nulla', 1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M'}
-
-UNI = ['I' , 'V'  'X']
-
-DECI = ['X', 'L', 'C']
-
-CENTI = ['C', 'D', 'M']
-
-MILLI = ['M', '_V', '_X']
-
-#############################################################################
-
-nulla
-
-I V X
-
-X L C
-
-C D M
-
-M _V _X
-
-_X _V _L
-
-_C _D _M 
-
-... and so on
-
-##############################################################################
-
-get_int_len -> get_key
 
 '''
 
@@ -82,7 +56,7 @@ def get_int_len(num):
 	return len(str(num))
 
 
-# Parses number to string and returns the roman numeral unformated.
+# Parses number to string and returns the roman numeral as string.
 def int_to_key(num):
 	int_str = str(num)
 	container = ''
@@ -90,38 +64,39 @@ def int_to_key(num):
 	for i in range(0, get_int_len(num)):
 		if i + 1 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-1])
-			container+=key_parser(int_str[i], MASTER_KEY[-1], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-1], int_str, i)
 		elif i + 2 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-2])
-			container+=key_parser(int_str[i], MASTER_KEY[-2], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-2], int_str, i)
 		elif i + 3 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-3])
-			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str, i)
 		elif i + 4 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-4])
-			container+=key_parser(int_str[i], MASTER_KEY[-4], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-4], int_str, i)
 		elif i + 5 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-2])
-			container+=key_parser(int_str[i], MASTER_KEY[-2], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-2], int_str, i)
 		elif i + 6 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-3])
-			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str, i)
 		elif i + 7 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-4])
-			container+=key_parser(int_str[i], MASTER_KEY[-4], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-4], int_str, i)
 		elif i + 8 == len(int_str):
 			# print(int_str[i], i, num, MASTER_KEY[-3])
-			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str)
+			container+=key_parser(int_str[i], MASTER_KEY[-3], int_str, i)
 
 	return container
 
-# Recieves a number and returns the roman numeral equvalent of that digit based on its position in the number.
-def key_parser(digit, key, num):
+# Receives a number and returns the roman numeral equvalent of that digit based on its position in the number.
+def key_parser(digit, key, num, i):
 	int_length = get_int_len(num)
 	if digit == '0' and int_length == 1:
 		return null
 	if digit == '0':
 		return ''
+	# Table is the key for decimal roman numeral pattern
 	table = [
 		key[0],
 		(key[0] + key[0]),
@@ -137,8 +112,8 @@ def key_parser(digit, key, num):
 	# print('number length is ', int_length)
 	# print(num.index(digit))
 	if int_length > 4:		
-		if num.find(digit) == 0:
-			print(num, digit)
+		if i == 0:
+			# print(num, digit, num.find(digit))
 			# print(MILLI_MULTIPLIER + str(table[int(digit) - 1]))
 			return MILLI_MULTIPLIER + str(table[int(digit) - 1])
 		else:
@@ -153,7 +128,7 @@ def key_parser(digit, key, num):
 
 # Test a range of numbers
 def test_number_range(r):
-	for n in range(0, r):
+	for n in range(1980, r):
 		print(int_to_key(n))
 
 # Test a single instance, a single integer
@@ -161,7 +136,5 @@ def test_single_int(num):
 	print(num, int_to_key(num))
 
 # TESTING
-test_single_int(66606)
-# test_number_range(101)
-
-	
+test_single_int(0)
+test_number_range(2030)
