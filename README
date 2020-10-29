@@ -2,11 +2,9 @@ Repo of small stand-alone scripts, probably in py. Useless, useful, personal,tes
 
 Current scripts are:
 
-Roman Numeral Converter : Converts up to 10000.
+r_num_2.py - Roman Numeral Converter : Converts 0 to 1,000,000.
 
-Port List game : Guessing game for some well-known ports.
-
-Node Server : Just a server setup for now
+/ipanema/plist.py - Port List Game : Guessing game for some well-known ports.
 
 Clean Directory : a better method is bash commands like find.
 
