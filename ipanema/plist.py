@@ -16,11 +16,11 @@ from mixed_game import mixed_game
 
 def game_type():
 	print('You have three options:\n')
-	print('Name Game - Where you name the port number (Enter 1)')
-	print('Port Game - Where you number the name (Enter 2)')
-	print('Mixed Game - Where you randomly get either one (Enter 3)\n')
+	print('Name Game\v ^^^^ ^ \vWhere you name the port number (Enter 1)')
+	print('Port Game\v ^^^ ^^ \aWhere you number the name (Enter 2)')
+	print('Mixed Game\v ^ ^^ ^ \fWhere you randomly get either one (Enter 3)\n')
 	
-	type_input = int(input('What\'s your journey?'))
+	type_input = int(input('What\'s your journey? '))
 	
 	return game_select(type_input)
 
