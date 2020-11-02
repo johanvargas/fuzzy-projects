@@ -9,6 +9,7 @@
 # postgres -D db/dir - in this case postgres_db/
 # then you can run psql to enter databases.
 # psql <databasename>
+# psql --list : to list available databases.
 
 # (From postgresql documentation) Warning Never, never, NEVER use Python string concatenation (+) 
 # or string parameters interpolation (%) to pass variables to a 
