@@ -1,7 +1,7 @@
 import psycopg2
 from config import config
 
-def add_data():
+def add_data(data):
 	''' Connect to PostgreSQL db server '''
 	
 	conn = None
@@ -13,7 +13,7 @@ def add_data():
 		cur = conn.cursor()
 		
 		# get_version(cur)
-		add_row(conn, cur)
+		add_row(conn, cur, data)
 
 	except (Exception, psycopg2.DatabaseError) as error:
 		print(error)
@@ -23,11 +23,11 @@ def add_data():
 			conn.close()
 			print('Database connection is closed.')
 
-def add_row(conn, cur):
+def add_row(conn, cur, data):
 	# INSERT (create)
 	# add row to item table
-	data = ''
-	cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', (data, ))
+	cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', data)
+	# cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', (data, )), prob a safer means of inserting data, safety first!
 	conn.commit()
 	print('Item added succesfully.')
 	cur.close()
