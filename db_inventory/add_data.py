@@ -26,7 +26,8 @@ def add_data(data):
 def add_row(conn, cur, data):
 	# INSERT (create)
 	# add row to item table
-	cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', data)
+	# data = 'Wolverine','Marvel Comic/ Hulk 181', 2000.00,'No Image Available','On Sale'
+	cur.execute('INSERT INTO item (name, description, price, images, status) VALUES %s', (data, ))
 	# cur.execute('INSERT INTO item (name, description, price, images, status) VALUES (%s)', (data, )), prob a safer means of inserting data, safety first!
 	conn.commit()
 	print('Item added succesfully.')
