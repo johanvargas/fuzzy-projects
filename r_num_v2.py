@@ -128,7 +128,8 @@ def key_parser(digit, key, num, i):
 
 # Test a range of numbers
 def test_number_range(r):
-	for n in range(1980, r):
+    # r - the range from, 0 to r to print
+	for n in range(0, r):
 		print(int_to_key(n))
 
 # Test a single instance, a single integer
@@ -136,5 +137,11 @@ def test_single_int(num):
 	print(num, int_to_key(num))
 
 # TESTING
-test_single_int(0)
-test_number_range(2030)
+single_int = 88
+t_range = 20
+
+print(single_int)
+test_single_int(single_int)
+
+print(t_range)
+test_number_range(t_range)
