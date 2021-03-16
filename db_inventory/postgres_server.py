@@ -14,11 +14,11 @@ Still finding methods of 'cleaning' data before inserting into db.
 
 '''
 
-name = (sys.argv[1]),
-description = (sys.argv[2]),
-price = (sys.argv[3]),
-images = (sys.argv[4]),
-status = (sys.argv[5]),
+name = sys.argv[1]
+description = sys.argv[2]
+price = sys.argv[3]
+images = sys.argv[4]
+status = sys.argv[5]
 
 data = name, description, price, images, status
 print(data)
