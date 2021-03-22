@@ -15,7 +15,12 @@ session_adapter = HTTPAdapter(max_retries=1)
 savoy_url = 'http://www.savoyparkr.com/'
 insta_url = 'http://www.instagram.com/accounts/login'
 
-print(getuser())
+if dir(getpass) == dir(getuser):
+    print('they are thee same')
+    print(getuser())
+
+else:
+    print('they are not the same, please check into it')
 
 with requests.Session() as session:
 #    session.auth = ('getmegyoza', getpass(prompt="getm*** password: ")) 
@@ -23,8 +28,9 @@ with requests.Session() as session:
     
     try:
         s = session.get(insta_url)
+        print('everything is ok, no output here for now')
 #        print(s.headers)
-        print(s.text)
+#        print(s.text)
     except ConnectionError as ce:
         print(ce)
 
