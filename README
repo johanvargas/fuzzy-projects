@@ -1,12 +1,4 @@
-Repo of small stand-alone scripts, probably in py. Useless, useful, personal,testing etc...
-
-Current scripts are:
-
-r_num_2.py - Roman Numeral Converter : Converts 0 to 1,000,000.
-
-/ipanema/plist.py - Port List Game : Guessing game for some well-known ports.
-
-Clean Directory : a better method is bash commands like find.
+#Repo of small stand-alone scripts, probably in py. Useless, useful, personal,testing etc...
 
 IPANEMA
 Things To Add:
@@ -36,4 +28,33 @@ Ideas:
 
 	It could learn your learning habits and feed info accordingly.
 
-
+# the scripts
+base64decode.py
+	attempt at a simple base 64 decoder for the 'distress signal challenge'
+clean_dir.py
+	attempt at cleaning a dir of duplicates, plus adding further functionality
+db_inventory
+	test db setting
+decoding.py
+	??
+dirtysocks.py
+	a socket connection attempt
+distress_msg
+	a encoded msg that has yet to be unscrambled
+hourglass.py
+	??
+ipanema
+	A simple network port naming game, needs a UI
+lib
+media
+pyplotstuff.py
+	graphing data PoF
+pytest
+	??
+r_num_v2.py
+	roman numeral converter, interface it to website
+requests-easy.py
+	requests PoF
+requirements.txt
+roman_num_converter.py
+	original roman numeral converter
