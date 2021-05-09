@@ -1,19 +1,8 @@
 import json
-import requests
 
-response = requests.get('https://jsonplaceholder.typicode.com/users/')
+with open("/Users/johanvargas/Downloads/spinsta/saved/saved_collections-2.json") as write_f:
+    json_file = json.load( write_f )
+#    print(json_file)
 
-if response.text:
-    print('the url returned a response.')
-else:
-    print('nothing here.')
-
-users = json.loads(response.text)
-
-print(users)
-
-for thing in users:
-    print(thing)
-
-#with open() as write_f:
-#    json.dump()
+    r = json.dumps(json_file, indent=2)
+    print(r)
