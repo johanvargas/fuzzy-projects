@@ -1,6 +1,17 @@
+from sys import platform
 import json
 
-MPATH = "/Users/johanvargas/Downloads/spinsta/saved/saved_collections-2.json"
+print(platform)
+
+try:
+    print(dict(platform))
+except Exception:
+    print("error encountered")
+if platform == 'darwin':
+    MPATH = "/Users/johanvargas/Downloads/saved/saved_collections.json"
+else:
+    MPATH = "/Users/johanvargas/Downloads/saved/saved_collections-2.json"
+
 JSON_ = json.loads(open(MPATH).read())
 
 print(JSON_.keys() == True)
@@ -98,6 +109,7 @@ def worker4(dic, sn):
     return key
 
 def worker5(dic, sn=1):
+    print(f"iteration {sn}")
     next_dic = ""
     if type(dic) == dict:
         for key in dic:
@@ -109,10 +121,12 @@ def worker5(dic, sn=1):
                 print("uh oh, this is a list")
                 print(len(next_dic))
 
-                for t in next_dic
+                for t in next_dic:
+                    print("this is a list item", t)
             return worker5(next_dic, sn)
 
     print(type(next_dic), next_dic)
+    return worker5(next_dic, sn)
     
 
 
@@ -121,5 +135,3 @@ def worker5(dic, sn=1):
 #worker_c = worker3(MPATH)
 #worker_d = worker4(JSON_, 1)
 worker_e = worker5(JSON_)
-
-#worker_e
