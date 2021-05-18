@@ -1,9 +1,8 @@
 import json
+import sys
 
 MPATH = "/Users/johanvargas/Downloads/spinsta/saved/saved_collections-2.json"
 JSON_ = json.loads(open(MPATH).read())
-
-print(JSON_.keys() == True)
 
 def worker(path):
     with open(path) as write_f:
@@ -109,17 +108,62 @@ def worker5(dic, sn=1):
                 print("uh oh, this is a list")
                 print(len(next_dic))
 
-                for t in next_dic
+                #for t in next_dic
             return worker5(next_dic, sn)
 
     print(type(next_dic), next_dic)
     
+def worker6(json, sn=1):
+    print(f"iteration {sn}")
+    myjson = json
+    
+    if type(myjson) == dict:
+        print("this is a dict [json]")
+        myjson = json.popitem()
+        sn+=1
+        return worker6(myjson, sn)
 
+    if type(myjson) == tuple or type(myjson) == list:
+        print(f"theda is a {type(myjson)}")
+        for t in myjson:
+            print("type from t = ", type(t))
+            if type(t) == list or type(t) == tuple:
+                myjson = t[0]
+                sn+=1
+                return worker6(myjson, sn)
+            elif type(t) == dict:
+                myjson = t
+                return worker6(myjson)
+    if sn == 20:
+        print("done")
+        return
+    sn+=1
+    return worker6(myjson, sn)
+
+def worker7(json):
+    k = json['saved_saved_collections']
+    for item in k:
+        k2 = item['string_map_data'].get('Shared By')
+        try:
+            print(k2['value'] )
+        except TypeError:
+            print('exception_skip')
+
+#    myjson = json.popitem()
+#    print("type of myjson = ", type(myjson))
+#    print("myjson array 0 = ", myjson[0])
+#    print(type(myjson[0]), type(myjson[1]))
+#    print(myjson[0],"\n", "myjson 1 0 = ", myjson[1][0])
+#    print(json)
+
+   # print(json, type(json))
+   # print(type(myjson[1], ))
 
 #worker_a = worker(MPATH)
 #worker_b = worker2(MPATH)
 #worker_c = worker3(MPATH)
 #worker_d = worker4(JSON_, 1)
-worker_e = worker5(JSON_)
-
-#worker_e
+#worker_e = worker5(JSON_)
+#worker_f = worker6(JSON_)
+worker_g = worker7(JSON_)
+worker_g
