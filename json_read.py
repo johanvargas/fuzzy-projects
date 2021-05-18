@@ -120,12 +120,9 @@ def worker5(dic, sn=1):
                 print("uh oh, this is a list")
                 print(len(next_dic))
 
-<<<<<<< HEAD
                 #for t in next_dic
-=======
                 for t in next_dic:
                     print("this is a list item", t)
->>>>>>> 4cbcdcf303c89a3e0af7f01b08b2020ec5ba4e7a
             return worker5(next_dic, sn)
 
     print(type(next_dic), next_dic)
@@ -181,11 +178,7 @@ def worker7(json):
 #worker_b = worker2(MPATH)
 #worker_c = worker3(MPATH)
 #worker_d = worker4(JSON_, 1)
-<<<<<<< HEAD
 #worker_e = worker5(JSON_)
 #worker_f = worker6(JSON_)
 worker_g = worker7(JSON_)
 worker_g
-=======
-worker_e = worker5(JSON_)
->>>>>>> 4cbcdcf303c89a3e0af7f01b08b2020ec5ba4e7a
