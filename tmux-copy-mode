@@ -1,0 +1,4 @@
+# If you are using tmux, the copy mode is very useful in keeping workflow moving on the cli. 
+# here some of the commands I have found that work in this environment. I have worked on Ubuntu, with a similar setup, and the bindings are a bit different so I will add those as I work in that environment.
+
+SPACE --> Brings you to line number 0, which is at the bottom of the page, not the top as I had originally thought. 
