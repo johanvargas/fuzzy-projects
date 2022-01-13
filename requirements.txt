@@ -22,7 +22,7 @@ MarkupSafe==1.1.1
 matplotlib==3.3.2
 numpy==1.19.2
 packaging==20.9
-Pillow==8.1.2
+Pillow==9.0.0
 pip-upgrader==1.4.15
 postgres==3.0.0
 psycopg2-binary==2.8.5
