@@ -20,7 +20,7 @@ Jinja2==2.11.3
 kiwisolver==1.2.0
 MarkupSafe==1.1.1
 matplotlib==3.3.2
-numpy==1.19.2
+numpy==1.22.0
 packaging==20.9
 Pillow==8.1.2
 pip-upgrader==1.4.15
