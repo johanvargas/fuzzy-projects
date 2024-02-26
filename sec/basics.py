@@ -23,6 +23,7 @@ print(movie_dictionary)
 try:
     for port in range(50, 85):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # AF_INET = IPv4 SOCK_STREAM = port
+        # target = 
         socket.setdefaulttimeout(1) # is a float
         result = s.connect_ex((target.port)) # returns error indicator
         print("checking port {}".format(port))
