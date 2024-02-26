@@ -14,26 +14,29 @@ from requests.exceptions import HTTPError
 # user url input
 # need a url verifier
 url = input("Enter URL: ")
-verified_url = url if len(url) < 0 else "https://www.youtube.com"
+verified_url = url if len(url) < 0 else "https://fapello.com/sakurawaifu/"
 
 # collecting response data
-content = None # http file
 link_source = []
+img_source = []
 
 def parse_url(soup):
     # print(soup.prettify())
-    links = soup.find_all('a')
-    # print(links)
-    for l in links:
+    links_a = soup.find_all('a')
+    links_img= soup.find_all('img')
+    for l in links_a:
         link_source.append(l)
-        #print( "image link: " + l.get('src'))
 
-    #print(type(soup))
-    print("Number of links found: " + str(len(link_source)))
+    for l in links_img:
+        img_source.append(l.get('src'))
+
+    print(f"{str(len(link_source))} links were found")
     
-    for l in link_source:
-        print(f"link is : {l}")
-    #print(soup.get_text())
+    if len(img_source) == 0:
+        print("No images were found on this page")
+    else:
+        for src in img_source:
+            print("Image source: " + src)
 
 try:
     response = requests.get(verified_url)
@@ -45,10 +48,9 @@ try:
 
     # parse data
     parse_url(soup)
-
 except HTTPError as httper:
     print(httper)
 except Exception as err:
     print(err)
 else:
-    print("\nLink collection completed!")
+    print("\nScrap Finished!!")
