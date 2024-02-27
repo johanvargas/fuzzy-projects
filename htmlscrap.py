@@ -3,7 +3,7 @@
 # more importantly it needs to follow links and find the base url for image and
 # download that.
 
-import subprocess, sys, requests, random
+import subprocess, sys, requests, random, os
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
 from urllib.request import urlretrieve
@@ -11,22 +11,21 @@ from urllib.request import urlretrieve
 # user url input
 # need a url verifier
 url = input("Enter URL: ")
-verified_url = url if len(url) < 0 else "https://fapello.com/sakurawaifu/"
+verified_url = url if len(url) > 0 else "https://fapello.com/sakurawaifu/"
 
 # collecting response data
 link_source = []
 img_source = []
 
-
 def download_img(url):
+    path = "/tmp/"
     try:
         res = requests.get(url)
-        img = open(f"{random.randrange(1000)}.jpg" ,'wb')
+        img = open(f"{os.path.join(path, str(random.randrange(1000000)))}.jpg" ,'wb')
         img.write(res.content)
         img.close()
-
-    except:
-        print("Oops! Something went wrong.")
+    except Exception as err:
+        print(f"Oops! Something went wrong while trying to download image {err}")
 
 def parse_url(soup):
     # print(soup.prettify())
