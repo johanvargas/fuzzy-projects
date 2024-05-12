@@ -11,14 +11,14 @@ from urllib.request import urlretrieve
 # user url input
 # need a url verifier
 url = input("Enter URL: ")
-verified_url = url if len(url) > 0 else "https://fapello.com/sakurawaifu/"
+verified_url = url if len(url) > 0 else "https://www.pixabay.com"
 
 # collecting response data
 link_source = []
 img_source = []
 
 def download_img(url):
-    path = "/tmp/"
+    path = "/Users/johanvargas/Downloads/"
     try:
         res = requests.get(url)
         img = open(f"{os.path.join(path, str(random.randrange(1000000)))}.jpg" ,'wb')
