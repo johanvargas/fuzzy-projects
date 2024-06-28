@@ -1,6 +1,11 @@
 import array, time, random, rp2
 from machine import Pin
 
+'''
+Button activated LED neopixel ring
+'''
+
+
 # Config WS2812 LEDs
 NUM_LEDS = 24
 brightness = 0.05
